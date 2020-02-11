@@ -27,11 +27,12 @@ export default class App extends Component {
     const prevQuery = prevState.searchQuery;
     const nextQuery = this.state.searchQuery;
 
-    // console.log(prevState.searchQuery);
-    // console.log(nextQuery);
-
     if (prevQuery !== nextQuery) {
       this.fetchGallery();
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "smooth"
+      });
     }
   }
 
@@ -68,12 +69,7 @@ export default class App extends Component {
   };
 
   loadMore = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
     this.fetchGallery();
-    
   };
 
   render() {
